@@ -108,15 +108,10 @@ xCube :: Cube
 xCube = let s = Side 'x' 'x' 'x' 'x' in Cube s s s s s s 
 
 isOneColor :: Side -> Bool
-isOneColor (Side a b c d)
-    | (a==b) && (a==c) && (a==d) = True
-    | otherwise = False
+isOneColor (Side a b c d) = (a==b) && (a==c) && (a==d)
 
 isSolved :: Cube -> Bool
-isSolved (Cube a b c d e f) 
-    | map isOneColor [a, b, c, d, e, f] == [True, True, True, True, True, True] = True
-    | otherwise = False
-
+isSolved (Cube a b c d e f) = all isOneColor [a, b, c, d, e, f]
 
 allRotations :: [Cube -> Cube]
 allRotations = [rotUr, rotU, rotFr, rotF, rotRr, rotR]
@@ -136,7 +131,8 @@ bfs queue m
         else
             if Map.member cube m
             then bfs (qPop queue) m
-            else let nQueue = foldr (\(rot, rotStr) q -> qPush ((rot cube), ([rotStr] ++ str)) q) (qPop queue) allRotationsTuple in
+            else let nQueue = foldr (\(rot, rotStr) q ->  qPush ((rot cube), ([rotStr] ++ str)) q) (qPop queue) allRotationsTuple 
+                in
                 bfs nQueue (Map.insert cube str m)
 
 solve :: Cube -> String
