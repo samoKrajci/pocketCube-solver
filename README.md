@@ -4,9 +4,11 @@ haskell project for "logical programming" class - solver for 2x2x2 rubik's cube
 
 ## How to run
 
-It is recommended to compile code with `ghc -O2 cube.hs`. Then simply run `./cube` (there is also program in the repository).
+It is recommended to compile code with `ghc -O2 cube.hs`. Then simply run `./cube`.
 
-Enter code as a cube map in following format
+## Input and output
+
+Enter cube as a cube map in the following format with each color being an unique char:
 
 ```
 UU
@@ -15,6 +17,20 @@ FFRRBBLL
 FFRRBBLL
 DD
 DD
+```
+
+Example input:
+```
+gw
+or
+ybyobwrg
+wrbrgobg
+ow
+yy
+```
+Example output:
+```
+R F U' R' F R F R' F U' F'
 ```
 
 The computation can take up to 1 minute, however most of the cases take only a few seconds.
