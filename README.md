@@ -1,6 +1,6 @@
 # Pocket cube solver
 
-haskell project for "logical programming" class - solver for 2x2x2 rubik's cube
+_Program for finding the solution of pocket cube (2x2x2 Rubik's cube) that requires the least amount of rotations._
 
 ## How to run
 
